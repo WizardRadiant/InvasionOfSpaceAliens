@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invasion of Space Aliens</title>
+    <style>
+        /* Общие стили для страницы */
+        body {
+            background-image: url('ImageFon.jpg'); /* Указываем изображение фона */
+            background-size: cover; /* Заполняем весь контейнер изображением */
+            background-attachment: fixed; /* Делаем изображение статичным */
+            background-position: center; /* Центрируем изображение */
+            color: #008080; /* Темно-бирюзовый цвет текста */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column; /* Вертикальное расположение элементов */
+            align-items: center; /* Центрируем содержимое по горизонтали */
+            padding: 20px 0;
+            background-color: rgba(34, 34, 34, 0.8); /* Полупрозрачный фон для заголовка */
+        }
+
+        .game-title {
+            color: white; /* Цвет текста белый */
+            font-size: 24px; /* Размер шрифта */
+            margin: 0; /* Убираем отступы */
+            padding-left: 20px; /* Отступ слева для разделения с WRUGames */
+        }
+
+        .wrugames-title {
+            color: white; /* Цвет текста белый */
+            font-size: 36px; /* Размер шрифта */
+            border: 3px solid #00BFFF; /* Бирюзовая рамка */
+            padding: 10px; /* Отступ внутри рамки */
+            border-radius: 10px; /* Закругление углов рамки */
+            margin: 10px 0; /* Отступы сверху и снизу */
+            text-align: center; /* Центрируем текст внутри рамки */
+            width: fit-content; /* Устанавливаем ширину по содержимому */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для рамки */
+        }
+
+        .bottom-panel {
+            background-color: rgba(34, 34, 34, 0.8); /* Полупрозрачный фон для нижней панели */
+            text-align: center; /* Центрируем текст в нижней панели */
+            padding: 20px 0; /* Отступ сверху и снизу */
+        }
+
+        .bottom-panel a {
+            color: white; /* Цвет текста ссылок белый */
+            text-decoration: none; /* Убираем подчеркивание у ссылок */
+        }
+
+        .bottom-panel a:hover {
+            text-decoration: underline; /* Подчеркивание при наведении на ссылки */
+        }
+
+        .content {
+            padding: 20px;
+            background-color: transparent; /* Убираем черный фон для контента */
+            margin: 20px; /* Отступы вокруг контента */
+            text-align: center; /* Центрируем текст в контенте */
+        }
+
+        .video-block h2 {
+            color: #00BFFF; /* Бирюзовый цвет для заголовка */
+            font-size: 36px; /* Крупный размер шрифта для заголовка */
+            margin: 20px 0; /* Отступы сверху и снизу */
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center; /* Центрируем содержимое */
+            margin: 20px 0; /* Отступ сверху и снизу */
+        }
+
+        .iframe-container {
+            display: flex;
+            justify-content: center; /* Центрируем iframe */
+        }
+
+        .itch-widget {
+            display: flex;
+            justify-content: center; /* Центрируем виджет itch.io */
+            margin: 20px 0; /* Отступ сверху и снизу */
+        }
+
+        /* Стили для миниатюр */
+        .thumbnail-container {
+            display: flex; /* Выстраиваем в ряд */
+            justify-content: center; /* Центрируем миниатюры */
+            margin: 20px 0; /* Отступ сверху и снизу */
+        }
+
+        .thumbnail {
+            width: 200px; /* Ширина миниатюры */
+            height: 112px; /* Высота миниатюры */
+            margin: 0 10px; /* Отступы между миниатюрами */
+            cursor: pointer; /* Курсор как указатель */
+            transition: transform 0.2s; /* Плавное увеличение при наведении */
+            object-fit: cover; /* Обеспечиваем сохранение пропорций */
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1); /* Увеличение при наведении */
+        }
+
+        /* Стиль для увеличенного изображения */
+        .modal {
+            display: none; /* Скрываем по умолчанию */
+            position: fixed; /* Фиксированное положение */
+            z-index: 1000; /* На переднем плане */
+            left: 0;
+            top: 0;
+            width: 100%; /* Полная ширина */
+            height: 100%; /* Полная высота */
+            background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный черный фон */
+            justify-content: center; /* Центрируем содержимое */
+            align-items: center; /* Центрируем содержимое */
+        }
+
+        .modal img {
+            max-width: 90%; /* Максимальная ширина изображения */
+            max-height: 90%; /* Максимальная высота изображения */
+        }
+
+        .close {
+            position: absolute; /* Абсолютное позиционирование */
+            top: 20px;
+            right: 30px;
+            color: white; /* Цвет текста */
+            font-size: 30px; /* Размер шрифта */
+            cursor: pointer; /* Курсор как указатель */
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrugames-title">WRUGames</div> <!-- Название компании в рамке -->
+    </header>
+
+    <main class="content">
+        <section class="video-block">
+            <h2>INVASION OF SPACE ALIENS</h2>
+            <div class="image-container">
+                <img src="https://img.itch.zone/aW1nLzE4MTI3MzIzLnBuZw==/original/A%2B3%2Bob.png" alt="Game Trailer Image" />
+            </div>
+            <p>Immerse yourself in the atmosphere of an alien invasion! Fight aliens, test your survival skills!</p>
+        </section>
+
+        <section class="video-block">
+            <h2>Trailer and gameplay video</h2>
+            <div class="iframe-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/d5xr7B9gkcw" 
+                    title="YouTube video player" 
+                    width="560" 
+                    height="315"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p>Explore the game's unique mechanics and secrets as you face dangerous enemies.</p>
+
+            <!-- Миниатюры под видео -->
+            <div class="thumbnail-container">
+                <img src="1.png" alt="Thumbnail 1" class="thumbnail" onclick="openModal(this.src)">
+                <img src="2.png" alt="Thumbnail 2" class="thumbnail" onclick="openModal(this.src)">
+                <img src="3.png" alt="Thumbnail 3" class="thumbnail" onclick="openModal(this.src)">
+                <img src="4.png" alt="Thumbnail 4" class="thumbnail" onclick="openModal(this.src)">
+            </div>
+
+            <!-- Модальное окно для увеличенного изображения -->
+            <div class="modal" id="modal" onclick="closeModal()">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img id="modalImage" src="" alt="Enlarged Image">
+            </div>
+
+            <!-- Остальная часть контента -->
+            <div class="game-description">
+                <h3>Game Description:</h3>
+                <p>Your massive cruiser has been sucked into a black hole, and now you're stranded in a distant corner of the universe, near a mysterious and unknown planet. But that's not your only problem. This strange and dangerous sector of space is under attack by alien invaders! In Invasion of Space Aliens, you take control of a powerful assault ship, tasked with gathering platinum from asteroids to repair your cruiser and find a way back home, all while battling endless waves of enemies and deadly bosses.</p>
+                <p>Say goodbye to peaceful flights! Alien hordes are relentless and will stop at nothing to destroy you. You'll need sharp piloting skills, weapon upgrades, and resource collection to survive. Uncover the secrets of this strange planet while fighting for your life.</p>
+                <p>For now, the game offers an endless survival mode, where the difficulty ramps up with each wave of enemies. But that's just the beginning! Future updates will include new missions, diverse bosses, interactive cutscenes, and even more space to explore.</p>
+
+                <h4>Key Features:</h4>
+                <ul>
+                    <li>Black hole and mysterious planet — You’ve ended up in an unknown part of the universe, full of dangers and secrets.</li>
+                    <li>Endless survival mode — How long can you last against the growing alien threat?</li>
+                    <li>Epic boss battles — Each enemy is unique and requires different strategies to defeat.</li>
+                    <li>Assault ship upgrades — Gather platinum and upgrade your ship to become even stronger.</li>
+                    <li>Future updates — New missions, levels, cutscenes, and alien threats are on the way!</li>
+                </ul>
+
+                <h4>Controls:</h4>
+                <ul>
+                    <li>WASD — Move your ship through space.</li>
+                    <li>F — Turn on the spotlight to illuminate your surroundings.</li>
+                    <li>TAB — Open the shop to purchase upgrades.</li>
+                    <li>ESC — Open the settings menu.</li>
+                    <li>Space — Skip dialogues (in future updates).</li>
+                    <li>Shift (hold) — Manually target enemies for your drones.</li>
+                    <li>Alt - Show drone health.</li>
+                </ul>
+                
+                <p>A black hole has thrown you into an unknown dimension. Can you survive the alien invasion and find your way back home? Strap in and start your cosmic adventure now!</p>
+
+                <h4>Minimum Requirements:</h4>
+                <ul>
+                    <li>Requires a 64-bit processor and operating system</li>
+                    <li>OS: Windows 10 / 11</li>
+                    <li>Processor: Dual core</li>
+                    <li>Memory: 4 GB RAM</li>
+                    <li>Graphics: Intel HD graphics 530 or better</li>
+                    <li>DirectX: Version 12</li>
+                </ul>
+
+                <p>It would also be fantastic if someone could make a review of the game on their YouTube channel. Your feedback and support will help me make the project even better!</p>
+
+                <h4>Early Access!</h4>
+            </div>
+
+            <!-- Виджет игры на itch.io -->
+            <div class="itch-widget">
+                <iframe frameborder="0" src="https://itch.io/embed/3030911?bg_color=000000&amp;fg_color=00ecf9" width="552" height="167">
+                    <a href="https://wizardradiant.itch.io/invasion-of-space-aliens">Invasion of Space Aliens by WizardRadiant</a>
+                </iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bottom-panel">
+        <p>&copy; 2024 WRUGames. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openModal(src) {
+            document.getElementById('modalImage').src = src; // Устанавливаем источник изображения
+            document.getElementById('modal').style.display = 'flex'; // Показываем модальное окно
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none'; // Скрываем модальное окно
+        }
+    </script>
+</body>
+</html>
